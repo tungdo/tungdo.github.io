@@ -1,0 +1,86 @@
+/*--------------------------------------------------------------
+# SET UP MENU
+-------------------------------------------------------------- */
+
+/* Parent link container */
+.site-menu .menu-item {
+	overflow: hidden; /* helps remove horizontal scroll bar for RTL view */
+	position: relative;
+}
+.site-menu .menu-item:hover,
+.site-menu .menu-item.focus {
+	overflow: visible;
+}
+	/* Parent link */
+	.site-menu .menu-item > a {
+		display: block;
+	}
+
+	/* Current menu item link */
+	.site-menu .current-menu-item > a {
+		opacity: 0.6;
+	}
+	
+/* ## SUB MENU */
+.site-menu .dropdown-container {
+	opacity: 0.5;
+	position: absolute;
+	transition: opacity 0.2s; /* Specifically transition only "opacity" here. Transitioning anything else, like "margin", will cause flickering issue when text direction is set to RTL. */
+	z-index: 99999;
+}
+
+.site-menu .menu-item:hover > .dropdown-container,
+.site-menu .menu-item.focus > .dropdown-container {
+	opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# SUB-MENU BEHAVIOR
+-------------------------------------------------------------- */
+
+/*
+	## `.dropdown-ltr`
+
+	Display sub-menu items from left to right (not related to text direction).
+*/
+
+.dropdown-ltr .dropdown-container {
+	left: -999em;
+	top: 100%;
+}
+.dropdown-ltr .menu-item:hover 	> .dropdown-container,
+.dropdown-ltr .menu-item.focus 	> .dropdown-container {
+	left: auto;
+}
+.dropdown-ltr .dropdown-container .dropdown-container { /* for dropdown-containers nested within other dropdown-containers */
+	top: 0;
+	margin-left: 0.1rem;
+}
+.dropdown-ltr .sub-menu .menu-item:hover	> .dropdown-container,
+.dropdown-ltr .sub-menu .menu-item.focus 	> .dropdown-container {
+	left: 100%;
+}
+
+/*
+	##`.dropdown-rtl`
+	
+	Display sub-menu items from right to left (not related to text direction).
+*/
+
+.dropdown-rtl .dropdown-container {
+	left: -999em;
+	top: 100%;
+}
+.dropdown-rtl .menu-item:hover > .dropdown-container,
+.dropdown-rtl .menu-item.focus > .dropdown-container {
+	left: auto;
+	right: 0;
+}
+.dropdown-rtl .dropdown-container .dropdown-container {
+	top: 0;
+	margin-right: 0.1rem;
+}
+.dropdown-rtl .dropdown-container .menu-item:hover > .dropdown-container,
+.dropdown-rtl .dropdown-container .menu-item.focus > .dropdown-container {
+	right: 100%;
+}

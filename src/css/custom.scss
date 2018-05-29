@@ -1,0 +1,243 @@
+/*--------------------------------------------------------------
+# FONT EMBEDS
+-------------------------------------------------------------- */
+
+@font-face {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*--------------------------------------------------------------
+# COLORS
+-------------------------------------------------------------- */
+
+a {
+	color: #000;
+}
+
+/*--------------------------------------------------------------
+# TYPOGRAPHY
+-------------------------------------------------------------- */
+
+$ff-1: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+
+body {
+	color: #666;
+	font-family: $ff-1;
+	font-size: 1.8rem;
+	font-weight: 300;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.article-content h1 {font-size: 160%;	letter-spacing: -0.025em}
+.article-content h2 {font-size: 140%;	letter-spacing: -0.025em}
+.article-content h3 {font-size: 120%;	letter-spacing: -0.025em}
+.article-content h4 {font-size: 100%;	}
+.article-content h5 {font-size: 80%;	}
+.article-content h6 {font-size: 60%;	}
+
+/*--------------------------------------------------------------
+# FORMS
+-------------------------------------------------------------- */
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	color: #000;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #000;
+	opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #000;
+	opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #000;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+	color: #000;
+}
+
+/* Button */
+.btn,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	background: #000;
+	border: 0.2rem solid #000;
+	border-radius: 0.4rem;
+	color: #fff;
+	font-weight: bold;
+	padding: 0.6em 1em;
+	text-shadow: 0 0.1rem rgba(0,0,0,0.25);
+}
+
+/* Button Hover */
+.btn:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+.btn:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus {
+	background-color: #000;
+	outline: 0;
+}
+
+/* Fields */
+input[type]:not([type="submit"]):not([type="reset"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+	background: #fff;
+	border-color: rgba(0,0,0,0.1);
+	border-width: 0.2rem;
+	border-radius: 0.4rem;
+	margin-bottom: 1rem;
+	padding: 0.6em 1em;
+}
+
+input[type]:not([type="submit"]):not([type="reset"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+	border-color: #000;
+	color: #000;
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# CUSTOM
+-------------------------------------------------------------- */
+
+.article-content .alignleft,
+.article-content .alignright {
+	margin-top: 0.35em;
+}
+
+.role-label {
+	display: inline-block;
+	text-decoration: underline;
+}
+
+/*--------------------------------------------------------------
+# MOBILE COMPONENTS
+-------------------------------------------------------------- */
+
+/* === Mobile Call Button ===
+There's only one call button like this per page.
+Let's use ID instead of CLASS
+*/
+
+#mobile-call-button {
+	background: #393;
+	font-size: 5.2rem;
+	transform: translate(9999em);
+}
+@media only screen and (max-width: 1000px) {
+	#mobile-call-button {
+		transform: translate(0);
+	}
+}
+#mobile-call-button:hover {
+	background: #37c837;
+}
+
+/* === Mobile Navigation ===
+
+	[1] Set display rules for mobile-nav and its open/close button.
+	[2] Move mobile-nav__items-container out of the way by default.
+		Purposely using absolute position instead of "display: none".
+		Once button is clicked, switch it back to static positioning.
+	[3] Set display rules for main mobile-nav and site-nav (desktop nav).
+		NOTICE! [1] and [2] uses CSS classes, but [3] uses ID's.
+		[3] is targeting the main mobile nav and the related site nav
+		as the two go together. If new a set of site nav and its mobile
+		counterpart are added in the future, you should name them
+		#site-nav-2 and #mobile-nav-2 then set custom display rules
+		for them.
+*/
+
+
+/* [1] */
+.mobile-nav,
+.mobile-nav__toggle .close,
+.visible > .mobile-nav__toggle .open	{ display: none;	}
+
+.visible > .mobile-nav__toggle .close 	{ display: inline;	}
+
+/* [2] */
+.js .mobile-nav__items-container { /* Hide mobile navigation list by default, but only when JS is enabled. */
+	position: absolute;
+		left: -9999em;
+		top: 0;
+}
+.mobile-nav.visible .mobile-nav__items-container {
+	position: static;
+}
+
+#mobile-nav__toggle {
+	background: #fff;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: #000;
+	letter-spacing: -0.025em;
+	margin: 0;
+	padding: 0.6em 1em;
+	text-shadow: none;
+}
+
+/* [3] */
+@media only screen and (max-width: 768px) {
+
+	/* Show mobile nav */
+	#mobile-nav {
+		display: block;
+	}
+	/* Hide desktop nav */
+	#site-nav {
+		display: none;
+	}
+
+}
+
+/*--------------------------------------------------------------
+# RESPONSIVE CSS
+-------------------------------------------------------------- */
+
+/* === Backgrounds === */
+@media only screen and (max-width: 1200px) {
+	.cta-ribbon {
+		background-color: #000;
+	}
+	.bg--ribbon {
+		display: none;
+	}
+}
+@media only screen and (max-width: 880px) {
+	.bg--slashes {
+		display: none;
+	}
+}
